@@ -25,6 +25,8 @@ public class TransferServiceImplementation implements TransferService{
 	AccountRepo repo;
 	@Autowired
 	TransactionLogRepo logrepo;
+	@Autowired
+	RewardService rewardService;
 	
 	@Override
 	public TransferResponse transferMoney(TransferRequest transferRequest) {
@@ -74,9 +76,11 @@ public class TransferServiceImplementation implements TransferService{
 	    repo.save(fromAcc);
 		repo.save(toAcc);
 		logrepo.save(log);
+
+		int rewardPoints = rewardService.evaluateAndGrantReward(log);
 			
 		TransferResponse response = new TransferResponse(
-				log.getId(),log.getStatus(),"Successfull",log.getFromAccountId(),log.getToAccountId(),log.getAmount());
+				log.getId(),log.getStatus(),"Successfull",log.getFromAccountId(),log.getToAccountId(),log.getAmount(),rewardPoints);
 		return response;
 			
 		}

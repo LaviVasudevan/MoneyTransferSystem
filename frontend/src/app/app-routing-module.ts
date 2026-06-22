@@ -6,6 +6,7 @@ import { Accountinfo } from './accountinfo/accountinfo';
 import { Login } from './login/login';
 import { Transfer } from './transfer/transfer';
 import { History } from './history/history';
+import { Rewards } from './rewards/rewards';
 
 const routes: Routes = [
   {path:'getdetails/:id',component:GetDetails},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'home',component:Accountinfo},
   {path:'transfer/:id',component:Transfer},
   {path:'history/:id',component:History},
+  {path:'rewards/:id',component:Rewards},
   {path:'',component:Login}
 ];
 

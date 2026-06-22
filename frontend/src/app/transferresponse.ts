@@ -4,5 +4,6 @@ export interface Transferresponse {
 	message : string,
 	debitedFrom : number,
 	creditedTo : number,
-	amount : number
+	amount : number,
+	rewardPointsEarned : number
 }

@@ -16,6 +16,7 @@ export class Transfer {
 
   isSuccess: any = null;
   statusMessage: any = null;
+  rewardMessage: string | null = null;
   showBackButton: boolean = false;
  
   // Optional cap to match your previous patterns
@@ -33,7 +34,8 @@ export class Transfer {
     message : "",
     debitedFrom : 0,
     creditedTo : 0,
-    amount : 0
+    amount : 0,
+    rewardPointsEarned : 0
   };
  
   errorresp : ErrorResponse = {
@@ -113,6 +115,7 @@ export class Transfer {
   // -----------------------------------------------------------------
 
   transferMoney() {
+    this.rewardMessage = null;
     this.service.transferMoney(this.transferreq).subscribe({
       next: (resp: Transferresponse | ErrorResponse) => {
         if (resp && 'transactionId' in resp) {
@@ -120,6 +123,9 @@ export class Transfer {
           this.transferresp = resp;
           this.isSuccess = true;
           this.statusMessage = "Transfer successful!";
+          if (resp.rewardPointsEarned && resp.rewardPointsEarned > 0) {
+            this.rewardMessage = `You earned ${resp.rewardPointsEarned} reward point${resp.rewardPointsEarned > 1 ? 's' : ''} on this transaction!`;
+          }
           this.cd.detectChanges()
         }
       },

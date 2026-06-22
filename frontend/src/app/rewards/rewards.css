@@ -1,0 +1,233 @@
+.container {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background: #3b7ddd !important;
+  padding: 18px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.card-header h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.points-banner {
+  background: #fff3cd;
+  border: 1px solid #ffe69c;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.points-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.points-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+
+.points-label {
+  font-size: 13px;
+  color: #7a5b00;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.points-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.points-stat.highlight .points-value {
+  color: #28a745;
+}
+
+.redeem-panel {
+  background: #f5f9ff;
+  border: 1px solid #d6e6fb;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 25px;
+}
+
+.redeem-panel h5 {
+  margin-bottom: 4px;
+  color: #2c7be5;
+  font-weight: 600;
+}
+
+.redeem-rate {
+  font-size: 13px;
+  color: #6c757d;
+  margin-bottom: 14px;
+}
+
+.redeem-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.redeem-controls input {
+  flex: 1;
+  min-width: 160px;
+}
+
+.redeem-preview {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #2c7be5;
+  font-weight: 600;
+}
+
+.section-title {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  color: #2c7be5;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+table {
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #e8f0ff;
+}
+
+table thead th {
+  font-weight: 600;
+  color: #2c7be5;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 14px;
+}
+
+table tbody tr {
+  transition: 0.15s ease-in-out;
+}
+
+table tbody tr:hover {
+  background-color: #f5f9ff;
+}
+
+table td {
+  padding: 14px;
+  font-size: 15px;
+  color: #333;
+}
+
+.txn-id {
+  display: inline-block;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  cursor: default;
+}
+
+.credit {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.debit {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.btn-outline-secondary {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: #3b7ddd;
+  transition: 0.25s ease-in-out;
+  text-decoration: none;
+  color: white !important;
+  text-align: center;
+}
+
+.btn-outline-secondary:hover {
+  color: white;
+  background-color: #3b7ddd;
+  transform: translateY(-2px);
+}
+
+.card-body {
+  padding: 25px;
+}
+
+@media (max-width: 768px) {
+  table thead {
+    display: none;
+  }
+
+  table tbody td {
+    display: block;
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  table tbody tr {
+    margin-bottom: 15px;
+    background: #f9fbff;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  table tbody td::before {
+    font-weight: 600;
+    color: #2c7be5;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .earn-table tbody td:nth-child(1)::before { content: "Date"; }
+  .earn-table tbody td:nth-child(2)::before { content: "Transaction ID"; }
+  .earn-table tbody td:nth-child(3)::before { content: "Points Earned"; }
+
+  .redeem-table tbody td:nth-child(1)::before { content: "Date"; }
+  .redeem-table tbody td:nth-child(2)::before { content: "Points Redeemed"; }
+  .redeem-table tbody td:nth-child(3)::before { content: "Amount Credited"; }
+
+  .txn-id {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  .points-row {
+    justify-content: space-between;
+  }
+
+  .redeem-controls {
+    flex-direction: column;
+  }
+}
