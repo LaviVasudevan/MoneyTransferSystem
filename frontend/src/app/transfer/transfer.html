@@ -88,6 +88,13 @@
       </div>
     </div>
 
+    <!-- Reward earned box -->
+    <div class="mt-2" *ngIf="rewardMessage">
+      <div class="alert alert-reward" role="alert">
+        🎉 {{ rewardMessage }}
+      </div>
+    </div>
+
     <div *ngIf="showBackButton" class="back-button">
       <button type="button" (click)="navigate()">Back</button>
     </div>

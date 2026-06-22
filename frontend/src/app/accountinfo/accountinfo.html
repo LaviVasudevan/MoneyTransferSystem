@@ -6,6 +6,7 @@
         <a *ngIf="accountId" [routerLink]="['/balance', accountId]" class="btn btn-primary">GET BALANCE</a>
         <a *ngIf="accountId" [routerLink]="['/transfer', accountId]" class="btn btn-primary">TRANSFER MONEY</a>
         <a *ngIf="accountId" [routerLink]="['/history', accountId]" class="btn btn-primary">TRANSACTION HISTORY</a>
+        <a *ngIf="accountId" [routerLink]="['/rewards', accountId]" class="btn btn-primary">REWARD POINTS</a>
         <button class="btn btn-primary" (click)="logout()">Logout</button>
     </div>
 </div>

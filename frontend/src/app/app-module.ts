@@ -13,6 +13,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { HttpInterceptor } from './httpinterceptor';
 import { Transfer } from './transfer/transfer';
 import { History } from './history/history';
+import { Rewards } from './rewards/rewards';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { History } from './history/history';
     Login,
     Transfer,
     History,
+    Rewards,
     //Login
   ],
 

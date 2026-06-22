@@ -113,6 +113,13 @@
   border: 1px solid #f1aeb5;
 }
 
+.alert-reward {
+  background: #fff3cd;
+  color: #7a5b00;
+  border: 1px solid #ffe69c;
+  font-weight: 600;
+}
+
 /* Mobile adjustments */
 @media (max-width: 480px) {
   .transfer-container form {

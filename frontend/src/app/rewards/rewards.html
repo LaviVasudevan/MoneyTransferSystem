@@ -1,0 +1,116 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h3 class="mb-0">Reward Points</h3>
+        </div>
+
+        <div class="card-body">
+
+          <!-- Points summary -->
+          <div class="points-banner">
+            <div class="points-row">
+              <div class="points-stat">
+                <span class="points-label">Earned</span>
+                <span class="points-value">{{ totalPointsEarned }}</span>
+              </div>
+              <div class="points-stat">
+                <span class="points-label">Redeemed</span>
+                <span class="points-value">{{ totalPointsRedeemed }}</span>
+              </div>
+              <div class="points-stat highlight">
+                <span class="points-label">Available</span>
+                <span class="points-value">{{ availablePoints }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Redeem panel -->
+          <div class="redeem-panel">
+            <h5>Redeem points</h5>
+            <p class="redeem-rate">100 points = ₹5 &middot; credited to your account balance</p>
+
+            <div class="redeem-controls">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Points to redeem"
+                [(ngModel)]="redeemPointsInput"
+                min="1"
+                [max]="availablePoints" />
+              <button class="btn btn-success" (click)="redeem()" [disabled]="redeeming">
+                {{ redeeming ? 'Redeeming...' : 'Redeem' }}
+              </button>
+              <button class="btn btn-outline-success" (click)="redeemAll()" [disabled]="redeeming || availablePoints <= 0">
+                Redeem all
+              </button>
+            </div>
+
+            <p class="redeem-preview" *ngIf="redeemPointsInput && redeemPointsInput > 0">
+              You'll get ₹{{ redeemValuePreview.toFixed(2) }}
+            </p>
+
+            <div class="alert alert-success mt-2" *ngIf="redeemMessage">
+              🎉 {{ redeemMessage }}
+            </div>
+            <div class="alert alert-danger mt-2" *ngIf="redeemError">
+              {{ redeemError }}
+            </div>
+          </div>
+
+          <!-- Earning history -->
+          <h5 class="section-title">Points earned</h5>
+          <table *ngIf="history.length > 0" class="table table-bordered table-striped earn-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Transaction ID</th>
+                <th>Points Earned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let reward of history">
+                <td>{{ formatDate(reward.createdOn) }}</td>
+                <td><span class="txn-id" [title]="reward.transactionId">{{ reward.transactionId }}</span></td>
+                <td class="credit">+{{ reward.pointsEarned }} pt{{ reward.pointsEarned > 1 ? 's' : '' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p *ngIf="history.length === 0" class="text-center text-muted">
+            No reward points earned yet.
+          </p>
+
+          <!-- Redemption history -->
+          <h5 class="section-title">Points redeemed</h5>
+          <table *ngIf="redemptions.length > 0" class="table table-bordered table-striped redeem-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Points Redeemed</th>
+                <th>Amount Credited</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let redemption of redemptions">
+                <td>{{ formatDate(redemption.redeemedOn) }}</td>
+                <td class="debit">-{{ redemption.pointsRedeemed }} pt{{ redemption.pointsRedeemed > 1 ? 's' : '' }}</td>
+                <td class="credit">+₹{{ redemption.amountCredited.toFixed(2) }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p *ngIf="redemptions.length === 0" class="text-center text-muted">
+            No points redeemed yet.
+          </p>
+
+          <!-- Back Button -->
+          <div class="text-center mt-3">
+            <button class="btn btn-outline-secondary" (click)="goBack()">Back</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

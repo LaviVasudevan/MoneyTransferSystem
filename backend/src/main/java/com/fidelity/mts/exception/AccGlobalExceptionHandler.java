@@ -24,6 +24,11 @@ public class AccGlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("TRX-400","Insufficient Funds."));
     }
  
+    @ExceptionHandler(InsufficientRewardPointsException.class)
+    public ResponseEntity<ErrorResponse> handleInsufficientPoints(InsufficientRewardPointsException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("RWD-400","Insufficient Reward Points."));
+    }
+ 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArg(IllegalArgumentException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("VAL-422","Invalid Input."));

@@ -11,7 +11,8 @@ public record TransferResponse(
 		String message,
 		Long debitedFrom,
 		Long creditedTo,
-		BigDecimal amount
+		BigDecimal amount,
+		Integer rewardPointsEarned
 		) {
  
 	public UUID transactionId() {
@@ -36,6 +37,10 @@ public record TransferResponse(
  
 	public BigDecimal amount() {
 		return amount;
+	}
+
+	public Integer rewardPointsEarned() {
+		return rewardPointsEarned;
 	}
 
  
